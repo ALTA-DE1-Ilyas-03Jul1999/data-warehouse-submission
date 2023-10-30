@@ -1,2 +1,21 @@
 Instruksi:
 - jawab soal dan taruh solusi di folder ini!
+1. Perbedaannya:
+- Data warehouse : adalah repository berbagai data yang sudah diproses, data didapatkan dari berbagai sumber dan kemudian data tersebut bisa dari berbagai bentuk seperti table, json, dll untuk disimpan yang nantinya digunakan untuk departemen lain.
+- Data lake : merupakan wadah data mentah yang belum diproses dari cleaning sehingga data lake menampung berbagai raw data, namun tujuannya belum ada.
+
+2. Teknologi OLAP dipergunakan untuk database warehouse yang mana baik untuk membangun dan mempertahankan pengolahan data untuk kebutuhan business data warehouse. Karena keunggulannya ialah dapat melakukan banyak dimensi queri.
+Sedangkan OLTP dipergunakan untuk RDBMS, karena pengkategorian proses data yang harus menghadapi sejumlah besar tranksaksi dari user dalam jumlah banyak yang meliputi memasukan, memperbaharui, dan menghapus data.
+
+3. Amazon Redshift, Google BigQuery, Clickhouse, Snowflake, Databricks, Apache Dorris, dan Postgre dengan Citus Extension
+
+4. docker-compose -p citus up -d
+docker exec -it citus_master bash
+psql -U {username} -d postgres
+create extension citus
+create table
+
+
+5. 
+- Method heap merupakan metode membuat table dengan cara biasa yaitu penyimpanan berbasis baris(row), berfungsi baik pada beban kerja transaksional tapi tidak ntuk analytic query.
+- Method Columnar merupakan table berbasis column yang tersedia di citus dengan sql ke database. Dengan menyimpan secara column dan sekaligus compression, method columnar lebih populer karena dapat melewati coloumn yang tidak dibutuhkan.

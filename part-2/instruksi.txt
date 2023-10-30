@@ -1,2 +1,30 @@
 Instruksi:
 - jawab soal dan taruh solusi di folder ini!
+
+1. docker-compose -p citus up -d
+docker exec -it citus_master bash
+psql -U {username} -d postgres
+
+2. 
+-table columnar:
+create extension citus;
+create table events_columnar(
+device_id bigint,
+event_id bigserial,
+event_time timestamptz default now(),
+data jsonb not null
+)
+using columnar;
+
+-table biasa:
+create table events_row as select * from events_columnar;
+
+3. insert into events_columnar (device_id, data)
+select d, '{"hello":"columnar"}' from generate_series(1,100) d;
+
+(perintah dibuat sebelum membuat table biasa, sehingga insert dapat dilakukan ke-keduanya)
+
+4. \dt+
+
+5. table columnar dibuat untuk mengolah data besar sehingga lebih cepat untuk diproses dengan basis column yang dapat memuat jutaan data atau lebih. membuat table columnar pada postgres memerlukan citus extension, dengan cara memasukan image citus pada docker (citusdata/citus:)pada docker dan menjalankan docker-compose dan perintahnya, setelahnya baru dapat membuat table columnar.
+

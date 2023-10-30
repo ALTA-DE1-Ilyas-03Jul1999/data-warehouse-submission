@@ -1,0 +1,11 @@
+1. perbedaan:
+- replication: merupakan fungsi untuk membagikan data (table) secara utuh ke seluruh node/worker
+- sharding: merupakan fungsi untuk membagikan data (table) secara terpisah ke beberapa node/worker
+
+2. pada gambar
+3. pada gambar
+4. pada gambar
+
+5. Menggunakan repilcation sebaiknya saat data mengalami perubahan yang lambat dan data tersebut memiliki sifat yang penting.
+
+6. Menggunakan sharding sebaiknya saat data memiliki sifat yang jumlahnya banyak dan cepat, seperti transaksi dan order, sehingga dibutuhkan untuk storage (penyimpanan) yang banyak juga. sharding berfungsi untuk mempercepat proses pencarian.
